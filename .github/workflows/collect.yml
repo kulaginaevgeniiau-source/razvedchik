@@ -1,0 +1,25 @@
+name: Сбор кандидатов
+# 03:00 МСК: собрать свежие материалы из лент, облачный Разведчик заберёт их в 04:00
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Собрать
+        run: |
+          mkdir -p data
+          python3 tools/collect.py 26 > data/candidates.txt 2> data/collect-errors.txt || true
+          head -1 data/candidates.txt
+      - name: Сохранить в репозиторий
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "Кандидаты $(date -u +%F)" || exit 0
+          git pull --rebase -q && git push

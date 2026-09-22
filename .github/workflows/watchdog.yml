@@ -1,0 +1,25 @@
+name: Проверка выпуска
+# 05:30 МСК: если выпуска за сегодня нет — предупредить в Telegram, а не молчать
+on:
+  schedule:
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Проверить и предупредить
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          today=$(TZ=Europe/Moscow date +%F)
+          if [ -f "issues/$today.html" ]; then echo "выпуск $today на месте"; exit 0; fi
+          python3 - "$today" > /tmp/msg.txt <<'PY'
+          import sys
+          m = "января февраля марта апреля мая июня июля августа сентября октября ноября декабря".split()
+          y, mo, d = sys.argv[1].split("-")
+          print(f"🔭 <b>Разведчик · {int(d)} {m[int(mo)-1]}</b>\n\nСегодня выпуск не собрался. Разберусь и починю.")
+          PY
+          python3 tools/send_telegram.py /tmp/msg.txt

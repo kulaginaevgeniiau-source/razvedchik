@@ -1,6 +1,6 @@
 """Собирает кандидатов за последние N часов из RSS-лент и Google News.
 Запуск: python3 tools/collect.py [часы=26] > /tmp/candidates.txt
-Вывод: источник | время UTC | заголовок | ссылка"""
+Вывод: источник | время UTC | заголовок | ссылка | начало описания"""
 import re, sys, html, urllib.request, urllib.parse
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone, timedelta
@@ -62,6 +62,7 @@ with ThreadPoolExecutor(12) as ex:
     for name, body in ex.map(fetch, jobs):
         for it in re.findall(r"<item[\s>].*?</item>", body, re.S):
             title, link = tag(it, "title"), tag(it, "link")
+            desc = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(tag(it, "description")))).strip()[:220]
             try:
                 dt = parsedate_to_datetime(tag(it, "pubDate"))
             except Exception:
@@ -70,8 +71,8 @@ with ThreadPoolExecutor(12) as ex:
             if now - dt > timedelta(hours=HOURS) or key in seen:
                 continue
             seen.add(key)
-            rows.append((dt, name, title, link))
+            rows.append((dt, name, title, link, desc))
 rows.sort(reverse=True)
 print(f"# всего кандидатов: {len(rows)} за {HOURS} ч, сейчас {now:%Y-%m-%d %H:%M} UTC")
-for dt, name, title, link in rows:
-    print(f"{name} | {dt:%d.%m %H:%M} | {title} | {link}")
+for dt, name, title, link, desc in rows:
+    print(f"{name} | {dt:%d.%m %H:%M} | {title} | {link} | {desc}")
