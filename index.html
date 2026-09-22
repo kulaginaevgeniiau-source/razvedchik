@@ -1,0 +1,251 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Утренний разбор Симург</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F2F4F6; --surface:#FFFFFF; --ink:#16202A; --muted:#5B6875; --line:#DCE2E7;
+  --accent:#0B6E69; --accent-ink:#FFFFFF; --tint:#E4F1EF; --tint-ink:#0B4B47;
+  --warn:#9A3B12; --warn-tint:#FBEDE6;
+  --display:"Unbounded",system-ui,sans-serif; --body:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0F1519; --surface:#172027; --ink:#E6ECEF; --muted:#93A1AC; --line:#26323B;
+  --accent:#4FC1B7; --accent-ink:#0F1519; --tint:#12302D; --tint-ink:#BDE9E4; --warn:#F0A07C; --warn-tint:#33201A;}}
+:root[data-theme="dark"]{
+  --ground:#0F1519; --surface:#172027; --ink:#E6ECEF; --muted:#93A1AC; --line:#26323B;
+  --accent:#4FC1B7; --accent-ink:#0F1519; --tint:#12302D; --tint-ink:#BDE9E4; --warn:#F0A07C; --warn-tint:#33201A;}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:16px/1.6 var(--body);padding-inline:16px;padding-block:32px 64px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h1{font:700 clamp(28px,6vw,40px)/1.1 var(--display);letter-spacing:-.01em}
+h2{font:600 13px/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--line)}
+h3{font:600 20px/1.3 var(--body)}
+p{margin:0}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
+header{display:flex;flex-direction:column;gap:14px}
+.issue{color:var(--muted)}
+.stats{display:flex;flex-wrap:wrap;gap:6px 18px;color:var(--muted)}
+.stats b{color:var(--ink);font-weight:500}
+.brief{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.brief ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+section{display:flex;flex-direction:column;gap:20px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted)}
+.rank{color:var(--accent);font-weight:500}
+.row{display:grid;grid-template-columns:128px 1fr;gap:4px 16px}
+.row dt{font:500 12px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.row dd{margin:0}
+.num{font-variant-numeric:tabular-nums;font-weight:600}
+.adapt{background:var(--tint);color:var(--tint-ink);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.adapt .lbl{font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:500 12px/1 var(--body);padding:5px 9px;border-radius:99px;background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+.src{font-size:14px}
+.compact{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.compact article{padding:16px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.compact h3{font-size:17px}
+.compact .idea{font-size:15px}
+.compact .idea b{color:var(--accent);font-weight:600}
+.anti{background:var(--warn-tint);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.anti .lbl{color:var(--warn);font:600 12px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em}
+.news{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.news li{padding:11px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:12px}
+.news .plat{color:var(--muted)}
+.dayidea{background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.dayidea h3{font:700 22px/1.25 var(--display)}
+.dayidea ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.dayidea .mono{opacity:.8}
+footer{color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:8px}
+@media (max-width:520px){.row{grid-template-columns:1fr;gap:0}.row dd{margin-bottom:8px}.news li{grid-template-columns:1fr;gap:2px}.case{padding:18px}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="mono issue">ВЫПУСК № 1 · ВТОРНИК, 22 СЕНТЯБРЯ 2026 · ТЕСТОВЫЙ</div>
+  <h1>Утренний разбор маркетинга</h1>
+  <div class="mono stats">
+    <span>окно: <b>21.09 04:00 → 22.09 04:00 МСК</b></span>
+    <span>просмотрено: <b>335 материалов</b></span>
+    <span>в выпуск прошло: <b>12</b></span>
+  </div>
+</header>
+
+<div class="brief">
+  <div class="mono issue">КОРОТКО, ЕСЛИ ЕСТЬ 30 СЕКУНД</div>
+  <ol>
+    <li>Сингапурское пиво раздало людям промты вместо рекламного ролика: +32% узнаваемости и +15% продаж.</li>
+    <li>Школьница из ЮАР собрала больше миллиона просмотров, потому что о ней рассказывали другие.</li>
+    <li>Честная рубрика «Что внутри» принесла индийскому бренду 2 млн+ просмотров. Это наш ответ на путаницу между ЭЗ и системией.</li>
+  </ol>
+</div>
+
+<section>
+  <h2>Главное за сутки</h2>
+
+  <article class="case">
+    <div class="meta mono"><span class="rank">01</span><span>Сингапур</span><span>пиво</span><span>наружка · соцсети · ИИ-видео</span></div>
+    <h3>Brewlander попросил покупателей самих снять рекламу пива через ИИ и получил первый в истории Effie Singapore Гран-при</h3>
+    <dl class="row">
+      <dt>Что сделали</dt><dd>Вместо дорогого ролика напечатали готовые промты для ИИ-видео на подставках под пиво и билбордах. Любой мог сгенерировать «эпичную рекламу» Brewlander и выложить её. Агентство BLKJ Havas.</dd>
+      <dt>Результат</dt><dd><span class="num">+32%</span> спонтанной узнаваемости, <span class="num">+15%</span> продаж год к году, <span class="num">500+</span> роликов от людей, <span class="num">$5 млн</span> сэкономлено на продакшене. Гран-при Effie Singapore (впервые за 23 года премии) и награда David &amp; Goliath за результат при маленьком бюджете.</dd>
+      <dt>Почему сработало</dt><dd>Бренд дал людям не рекламу, а игрушку: готовый промт снимает страх чистого листа, а результат хочется показать друзьям. Каждый ролик становится рекламой, которую автор сам распространяет.</dd>
+    </dl>
+    <div class="adapt">
+      <span class="lbl">Как адаптировать для Симург</span>
+      <p>Разогрев @ennea.simurg к запуску 30.11: девять готовых промтов, по одному на каждый тип, «как видит мир мой тип». Подписчики генерируют картинку, выкладывают в сторис и отмечают аккаунт. Лучшие Вания разбирает в эфире: «узнали себя?» Первый шаг: написать промты для трёх типов и проверить, насколько узнаваемы картинки.</p>
+      <div class="tags"><span class="tag">@ennea.simurg</span><span class="tag">UGC</span><span class="tag">сторис</span></div>
+    </div>
+    <div class="src">Источники: <a href="https://campaignbriefasia.com/2026/09/22/blkj-havas-dominates-effie-singapore-awards-2026-with-grand-prix-and-five-gold-bbh-tbwa-and-grab-creative-studio-also-perform-strongly/">Campaign Brief Asia, 22.09</a> · <a href="https://cfotech.asia/story/brewlander-ai-irresponsibly-wins-first-effie-grand-prix">CFOtech Asia</a></div>
+  </article>
+
+  <article class="case">
+    <div class="meta mono"><span class="rank">02</span><span>ЮАР</span><span>личный бренд</span><span>TikTok · X</span></div>
+    <h3>Школьница баллотируется в старосты: вместо рассказа о себе в ролике про неё говорят одноклассники и учителя</h3>
+    <dl class="row">
+      <dt>Что сделали</dt><dd>Предвыборный ролик Коки Богашу повторяет сцену знакомства с Реджиной Джордж из «Дрянных девчонок». Одноклассники и сотрудники школы по очереди говорят, как она на них повлияла: «начала носить очки, потому что она носит», «пошла в физику», «стала лучше учиться».</dd>
+      <dt>Результат</dt><dd>Оригинал набрал <span class="num">1,3–1,5 млн</span> просмотров в TikTok (источники расходятся). После репоста в X его заметила Мисси Эллиотт, дальше подхватили медийные лица ЮАР и международные СМИ.</dd>
+      <dt>Почему сработало</dt><dd>О человеке рассказывают другие, поэтому это звучит как доказательство, а не хвастовство. Шаблон узнаётся с первой секунды, и зритель заранее знает, в какую игру играют. Все признания конкретные, без общих слов.</dd>
+    </dl>
+    <div class="adapt">
+      <span class="lbl">Как адаптировать для Симург</span>
+      <p>Рилс к старту ЭЗ 19 потока 5 октября: 6–8 студентов по очереди коротко говорят, что изменилось «из-за обучения», и каждое признание про конкретный поступок: «перестала кричать на сына», «впервые сказала „нет“ начальнику». Кадр в духе узнаваемой сцены, одна фраза на человека. Тот же приём подойдёт для Simurg World Казахстан: лица рассказывают друг о друге.</p>
+      <div class="tags"><span class="tag">ЭЗ 19 поток</span><span class="tag">Simurg World KZ</span><span class="tag">Reels</span></div>
+    </div>
+    <div class="src">Источники: <a href="https://www.citizen.co.za/lifestyle/kempton-park-matrics-mean-girls-style-campaign-goes-viral-catches-missy-elliotts-attention/">The Citizen</a> · <a href="https://www.news24.com/life/lifestyle-trends/rooting-for-her-kempton-park-head-girl-campaign-breaks-internet-gets-missy-elliot-cosign-20260909-1014">News24</a></div>
+  </article>
+
+  <article class="case">
+    <div class="meta mono"><span class="rank">03</span><span>Индия</span><span>здоровое питание</span><span>Instagram</span></div>
+    <h3>The Whole Truth строит бренд на честности: рубрика «Что внутри» разбирает состав без прикрас</h3>
+    <dl class="row">
+      <dt>Что сделали</dt><dd>Бренд батончиков отказался от громких обещаний «полезности». В рилсах «What's Inside?» он по косточкам разбирает свой и чужой состав, отвечает на реальные вопросы о здоровье и с юмором высмеивает обманные этикетки. 22.09 вышел свежий разбор их Instagram-стратегии.</dd>
+      <dt>Результат</dt><dd>Рилсы «What's Inside?» набрали <span class="num">2 млн+</span> просмотров, аккаунт вырос примерно до <span class="num">250 тыс.</span> подписчиков. Цифры продаж не раскрыты.</dd>
+      <dt>Почему сработало</dt><dd>В нише, где все обещают, честный рассказ «что внутри и кому это не подойдёт» сам по себе звучит как вызов. Обучающий контент вызывает доверие, а юмор помогает досмотреть до конца.</dd>
+    </dl>
+    <div class="adapt">
+      <span class="lbl">Как адаптировать для Симург</span>
+      <p>Рубрика «Что внутри обучения»: карусели и рилсы, где мы честно разбираем ЭЗ 19 поток. Что происходит в первые 4 месяца, что даёт профессиональная часть с дипломом, кому это обучение не подойдёт. Отдельный выпуск «ЭЗ или системия: куда идти» закроет хроническую путаницу аудитории. Первый шаг: собрать 10 самых частых вопросов из директа и отдела продаж.</p>
+      <div class="tags"><span class="tag">ЭЗ 19 поток + ДПО</span><span class="tag">ДПО системия</span><span class="tag">карусели</span></div>
+    </div>
+    <div class="src">Источники: <a href="https://brandspecharcha.com/2025/08/01/the-whole-truths-marketing-strategy-how-transparency-sells-healthy-snacks-in-india/">Brands Pe Charcha (цифры)</a> · <a href="https://www.socialsamosa.com/social-media-strategy/the-whole-truth-foods-social-media-playbook-humour-no-bs-marketing-8739051">Social Samosa</a> · свежий разбор: Buzzincontent, 22.09</div>
+  </article>
+
+  <article class="case">
+    <div class="meta mono"><span class="rank">04</span><span>Россия</span><span>фудтех × стриминг</span><span>сериал на Wink</span></div>
+    <h3>«Додо Пицца» встроилась в сюжет сериала о теннисе «Первая ракетка» вместо обычной рекламной вставки</h3>
+    <dl class="row">
+      <dt>Что сделали</dt><dd>Сейлз-хаус «Эверест», Wink и «Додо» сделали многоуровневую интеграцию: бренд живёт внутри сюжета, а не прерывает его.</dd>
+      <dt>Результат</dt><dd><span class="num">6 млн+</span> уникальных зрителей, <span class="num">80%+</span> досмотрели первую серию до конца, около <span class="num">50 млн</span> просмотров.</dd>
+      <dt>Почему сработало</dt><dd>Зритель не переключается, потому что бренд стал частью истории. Параллельно Snapchat опубликовал данные: <span class="num">42%</span> его пользователей смотрят короткие сериалы (микродрамы) каждый день. Сериальный формат сейчас на подъёме.</dd>
+    </dl>
+    <div class="adapt">
+      <span class="lbl">Как адаптировать для Симург</span>
+      <p>Микросериал из 5 серий по 60–90 секунд к старту ЭЗ: одна героиня, одна неделя, одна узнаваемая ситуация (ссора с мамой, выгорание на работе). В каждой серии конфликт нарастает, в конце Вания даёт один короткий разбор. Серии выходят через день, зритель ждёт продолжения, и так появляется частота контакта. Первый шаг: написать синопсис из 5 строк.</p>
+      <div class="tags"><span class="tag">ЭЗ 19 поток</span><span class="tag">Вания</span><span class="tag">Reels · VK Клипы</span></div>
+    </div>
+    <div class="src">Источники: <a href="https://www.sostav.ru/publication/kak-dodo-vosh-l-v-igru-i-vyigral-vnimanie-auditorii-87030.html">Sostav</a> · кейс на AdIndex, 22.09 · <a href="https://www.socialmediatoday.com/news/snapchat-report-examines-the-rise-of-microdramas/830970/">Social Media Today о микродрамах</a></div>
+  </article>
+
+  <article class="case">
+    <div class="meta mono"><span class="rank">05</span><span>Россия</span><span>банк × каршеринг</span><span>наружная реклама</span></div>
+    <h3>Сбер перекрасил весь парк Ситидрайва в свой зелёный цвет, и город стал одним рекламным носителем</h3>
+    <dl class="row">
+      <dt>Что сделали</dt><dd>Вместо точечных размещений машины каршеринга в Москве и Петербурге пять летних месяцев ездили в фирменном цвете. Бренд встречается утром, днём и вечером в разных районах.</dd>
+      <dt>Результат</dt><dd>Суммарно <span class="num">1,6 млрд+</span> потенциальных контактов. Один человек видел бренд <span class="num">41–76</span> раз в месяц, тогда как у цифровых экранов обычно <span class="num">7–12</span>. Данные исследования Ситидрайва и Билайна.</dd>
+      <dt>Почему сработало</dt><dd>Решила частота, а не яркость. Когда бренд повсюду, он перестаёт восприниматься как реклама и становится частью привычной среды.</dd>
+    </dl>
+    <div class="adapt">
+      <span class="lbl">Как адаптировать для Симург</span>
+      <p>Запуск Simurg World Казахстан 28.09: первые 4 недели держим один визуальный код (цвет, плашка, первая фраза) во всех роликах всех лиц и рубрик, чтобы аудитория узнавала проект за секунду, кто бы ни был в кадре. Частота вместо разовых вспышек: одна рубрика каждый день в одно и то же время.</p>
+      <div class="tags"><span class="tag">Simurg World KZ</span><span class="tag">визуальный код</span></div>
+    </div>
+    <div class="src">Источник: <a href="https://www.cossa.ru/news/350981/">Cossa, 22.09</a></div>
+  </article>
+</section>
+
+<section>
+  <h2>Ещё кейсы</h2>
+  <div class="compact">
+    <article>
+      <div class="meta mono"><span>США</span><span>гигиена</span><span>цифры не раскрыты</span></div>
+      <h3>Goodwipes говорит о туалетной теме с юмором и заходит в разговоры, которые уже идут</h3>
+      <p>Бренд влажных салфеток делает коллаборации с Liquid Death и Olipop и ищет «мини-моменты», то есть сообщества, где стыдную тему уже обсуждают открыто. Новый разговор бренд не придумывает. <a href="https://www.adweek.com/brand-marketing/how-goodwipes-made-a-splash-in-the-bathroom-business/">Adweek</a></p>
+      <p class="idea"><b>Для нас:</b> неудобные темы (злость на ребёнка, зависть к подруге) подхватываем через тренды, где люди уже делятся этим сами, и даём разрешение говорить вслух. <span class="tag">Вания</span></p>
+    </article>
+    <article>
+      <div class="meta mono"><span>Австралия</span><span>общепит</span><span>рост без цифр</span></div>
+      <h3>Mad Mex пересобрал программу лояльности: первая награда стала в 3 раза ближе</h3>
+      <p>Порог до награды снизили со <span class="num">$150</span> до <span class="num">$50</span>, добавили <span class="num">$5</span> после первой покупки и вернули «буррито на день рождения». Письма и пуши теперь запускаются по поведению клиента. <a href="https://www.marketingmag.com.au/sponsored/mad-mex-rebuilds-loyalty-and-accelerates-growth/">Marketing Mag</a> (спонсорский материал)</p>
+      <p class="idea"><b>Для нас:</b> первый маленький подарок сразу после первого действия, например разбор или практика в подарок после регистрации на эфир, а не после покупки. <span class="tag">все направления</span></p>
+    </article>
+    <article>
+      <div class="meta mono"><span>США</span><span>стриминг</span><span>цифры не раскрыты</span></div>
+      <h3>Twitch сделал настоящий автомат с игрушками, которым управляет чат трансляции</h3>
+      <p>Зрители вводят координаты, опускают клешню и выигрывают реальные призы в прямом эфире. <a href="https://musebyclios.com/partner-content/controlled-by-chat-inside-twitchs-interactive-arcade-the-claw/">Muse by Clios</a></p>
+      <p class="idea"><b>Для нас:</b> эфир, где чат выбирает, какую ситуацию Вания разберёт следующей, голосованием в реальном времени. <span class="tag">Вания</span> <span class="tag">эфиры</span></p>
+    </article>
+    <article>
+      <div class="meta mono"><span>США</span><span>EdTech</span><span>стартап</span></div>
+      <h3>ScrollEd превращает учебники в ленту как в TikTok, с квизом после каждой темы</h3>
+      <p>ИИ нарезает PDF на короткие видео, аудио и карточки. Свайп вверх ведёт к новой теме, свайп вбок позволяет углубиться. Приложение показали на TechCrunch Disrupt 20.09. <a href="https://www.tubefilter.com/2026/09/21/scrolled-turns-textbooks-into-tiktok-feeds-new-app/">Tubefilter</a></p>
+      <p class="idea"><b>Для нас:</b> конспект каждого модуля ЭЗ в виде карусели-свайпа с вопросом в конце. Для студентов это закрепление, для соцсетей готовый контент. <span class="tag">ЭЗ</span> <span class="tag">ДПО</span></p>
+    </article>
+    <article>
+      <div class="meta mono"><span>мир</span><span>YouTube</span><span>исследование</span></div>
+      <h3>Лицо «в шоке» на обложке — миф: его ставят только на 11% обложек больших каналов</h3>
+      <p>Проанализировано <span class="num">11 223</span> обложек <span class="num">1 043</span> каналов от 100 тыс. подписчиков. Лицо есть на 70% обложек, из них <span class="num">35%</span> нейтральные, <span class="num">32%</span> радостные и только <span class="num">11%</span> шокированные. <a href="https://www.globenewswire.com/news-release/2026/09/17/3364341/0/en/thumbnail-bench-publishes-study-of-11-223-youtube-thumbnails-the-shocked-face-is-a-myth.html">Thumbnail Bench</a></p>
+      <p class="idea"><b>Для нас:</b> на обложках YouTube Вании спокойное или тёплое лицо, это в тоне бренда и не проигрывает по кликам. <span class="tag">Вания</span> <span class="tag">YouTube</span></p>
+    </article>
+  </div>
+
+  <div class="anti">
+    <span class="lbl">Чего не повторять</span>
+    <p><b>Converse отозвал рекламу с Кариной из aespa.</b> Свет на юбке и то, как она держала кеды, зрители прочитали как отсылку к ку-клукс-клану и линчеванию. Бренд извинился: «Мы ошиблись». Урок для нас: каждый визуал перед публикацией должен посмотреть второй человек, который не участвовал в съёмке. <a href="https://www.cnn.com/2026/09/20/us/converse-ad-controversy-hnk">CNN</a></p>
+  </div>
+</section>
+
+<section>
+  <h2>Новости одной строкой</h2>
+  <ul class="news">
+    <li><span class="mono plat">Telegram</span><span>Кружки можно делать квадратными, появились 60 FPS и настройка качества видео. <a href="https://rb.ru/news/kruzhki-v-telegram-stanut-kvadratami-polzovateli-messendzhera-smogut-menyat-formu-videosoobshenij/">RB.ru</a></span></li>
+    <li><span class="mono plat">Threads</span><span>Рекламодателям больше не нужен аккаунт в Instagram. <a href="https://www.socialmediatoday.com/news/threads-advertisers-will-no-longer-need-an-instagram-account/830967/">SMT</a></span></li>
+    <li><span class="mono plat">X</span><span>Площадка объяснила, за что режет охват постов. <a href="https://www.socialmediatoday.com/news/x-shares-more-insight-into-penalties-impacting-post-reach/830972/">SMT</a></span></li>
+    <li><span class="mono plat">Snapchat</span><span>42% пользователей каждый день смотрят микродрамы (Ipsos, 3000 человек). <a href="https://www.socialmediatoday.com/news/snapchat-report-examines-the-rise-of-microdramas/830970/">SMT</a></span></li>
+    <li><span class="mono plat">Креаторы</span><span>Доходы креаторов в Британии впервые превысят £1 млрд: £1,22 млрд, +26%. <a href="https://www.marketingweek.com/creator-brand-investment-senior-salaries-5-interesting-stats/">Marketing Week</a></span></li>
+    <li><span class="mono plat">Pinterest</span><span>Запущена реклама в визуальном поиске для всех рекламодателей. <a href="https://digiday.com/marketing/pinterest-unveils-new-suite-of-ad-tools-including-visual-search-ads-in-its-pitch-to-brands/">Digiday</a></span></li>
+    <li><span class="mono plat">Google</span><span>Исследование: ИИ-режим поиска отдаёт сайтам меньше переходов. <a href="https://www.searchenginejournal.com/research-shows-google-ai-mode-sends-less-clicks-is-a-poor-user-experience/590221/">SEJ</a></span></li>
+    <li><span class="mono plat">YouTube</span><span>Alex Cooper (Unwell) выпускает 4 шоу, включая микродраму, и делает ставку на YouTube. <a href="https://www.adweek.com/media/unwell-alex-cooper-new-shows-youtube/">Adweek</a></span></li>
+    <li><span class="mono plat">Обучение</span><span>37% специалистов нашли первую работу в диджитале благодаря самообразованию. <a href="https://rb.ru/news/samoobrazovanie-pomoglo-37-specialistov-poluchit-pervuyu-rabotu-v-didzhitale-kazhdomu-chetvyortomu-ne-hvatalo-opyta/">RB.ru</a></span></li>
+    <li><span class="mono plat">MAX · за 3 дня</span><span>Рынок рекламы в MAX вырос в 55 раз за полгода, установки приложений в 7 раз дешевле, чем в Telegram. <a href="https://www.cossa.ru/news/348989/">Cossa</a></span></li>
+  </ul>
+</section>
+
+<section>
+  <h2>Идея дня</h2>
+  <div class="dayidea">
+    <span class="mono">ЭЗ 19 ПОТОК + ДПО · КАРУСЕЛИ И REELS · ДО 5 ОКТЯБРЯ</span>
+    <h3>Рубрика «Что внутри обучения»</h3>
+    <p>Приём The Whole Truth закрывает сразу две наши задачи: показывает две траектории 19 потока и отвечает на вопрос, который аудитория задаёт постоянно: «ЭЗ или системия?» Честное «кому это не подойдёт» вызывает больше доверия, чем любое обещание.</p>
+    <ol>
+      <li>Собрать 10 частых вопросов из директа и отдела продаж.</li>
+      <li>Первый выпуск: «ЭЗ или системия: куда идти» в виде карусели-развилки.</li>
+      <li>Второй: «Что внутри первых 4 месяцев и что даёт диплом».</li>
+      <li>Третий: «Кому это обучение не подойдёт», тон спокойный, без продажи.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <p>Отбор: у кейса есть результат, первоисточник и механика, которую можно повторить. Если цифр нет, это помечено. Всё переведено и пересказано, в первоисточниках могут быть детали.</p>
+  <p class="mono">Архив: <a href="issues/2026-09-22.html">22.09.2026</a></p>
+</footer>
+
+</div>
