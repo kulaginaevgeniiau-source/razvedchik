@@ -1,8 +1,6 @@
 name: Проверка выпуска
 # 05:30 МСК: если выпуска за сегодня нет — предупредить в Telegram, а не молчать
 on:
-  schedule:
-    - cron: "30 2 * * *"
   workflow_dispatch:
 jobs:
   check:
